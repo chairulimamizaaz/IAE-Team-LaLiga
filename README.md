@@ -1,4 +1,6 @@
-# IAE-Team-LaLiga
-- python==3.11.3                    # Versi Python yang digunakan untuk mengembangkan aplikasi.
-- Flask==2.3.3                      # Micro web framework untuk Python.
-- requests==2.26.0                  # Library untuk membuat HTTP requests.
+This application was created using the Flask framework with the Python programming language
+and use the consume API from https://apifootball.com/, by taking two APIs Competitions and Teams
+# Documentation
+- python==3.11.3                    # The version of Python used to develop the application.
+- Flask==2.3.3                      # Micro web framework for Python.
+- requests==2.26.0                  # Library for making HTTP requests.
