@@ -7,7 +7,7 @@
     <script>
         function replaceBrokenImage(image) {
             image.onerror = '';
-            image.src = '/static/92588_aitor-paredes.jpg'; // Ganti dengan sumber gambar alternatif
+            image.src = '/static/92588_aitor-paredes.jpg'; 
             return true;
         }
     </script>
@@ -50,13 +50,13 @@
 
         #head-card {
             margin: 20px auto 20px;
-            width: calc(100% - 10px); /* Lebar 80% dari lebar viewport */
-            max-width: 86.5%; /* Maksimum lebar 300px */
-            background-color: rgba(240, 240, 240, 0.445); /* Transparan abu-abu untuk latar belakang */
+            width: calc(100% - 10px);
+            max-width: 86.5%;
+            background-color: rgba(240, 240, 240, 0.445);
             padding: 30px;
             border-radius: 10px;
             display: flex;
-            align-items: center; /* Menengahkan vertikal */
+            align-items: center;
         }
 
         #head-card h1 {
@@ -77,8 +77,8 @@
         }
     
         #team-info h1 {
-            margin-top: 30px; /* Mengurangi jarak atas */
-            margin-bottom: -10px; /* Mengurangi jarak bawah */
+            margin-top: 30px;
+            margin-bottom: -10px;
         }
 
 
@@ -90,13 +90,13 @@
         }
 
         .player-card {
-            width: calc(80% / 5 - 20px); /* Lebar kartu pemain, dikurangi margin */
+            width: calc(80% / 5 - 20px);
             margin: 20px;
             background-color: rgba(240, 240, 240, 0.445);
             border-radius: 10px;
             padding: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: inline-block; /* Menampilkan dalam satu baris */
+            display: inline-block;
             transition: transform 0.3s ease, filter 0.3s ease;
         }
 
@@ -107,7 +107,7 @@
 
         .player-card img {
             width: 100%;
-            border-radius: 5px 5px 0 0; /* Memiliki radius sudut di bagian atas saja */
+            border-radius: 5px 5px 0 0;
         }
 
         .player-details {
