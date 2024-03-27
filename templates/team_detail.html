@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ team.team_name }}</title>
+    <script>
+        function replaceBrokenImage(image) {
+            image.onerror = '';
+            image.src = '/static/92588_aitor-paredes.jpg'; // Ganti dengan sumber gambar alternatif
+            return true;
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('/static/Background.jpeg');
+            background-size: cover;
+            filter: blur(10px);
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(33, 71, 241, 0.164);
+            z-index: -1;
+        }
+
+        #content {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        #head-card {
+            margin: 20px auto 20px;
+            width: calc(100% - 10px); /* Lebar 80% dari lebar viewport */
+            max-width: 86.5%; /* Maksimum lebar 300px */
+            background-color: rgba(240, 240, 240, 0.445); /* Transparan abu-abu untuk latar belakang */
+            padding: 30px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center; /* Menengahkan vertikal */
+        }
+
+        #head-card h1 {
+            margin: 0;
+        }
+
+        #head-card {
+            display: flex;
+            align-items: center;
+        }
+    
+        #logo {
+            margin-left: 10px;
+        }
+    
+        #team-info {
+            text-align: left;
+        }
+    
+        #team-info h1 {
+            margin-top: 30px; /* Mengurangi jarak atas */
+            margin-bottom: -10px; /* Mengurangi jarak bawah */
+        }
+
+
+        #team-info ul {
+            font-weight: bold;
+            font-size: 18px;
+            padding-left: 0;
+            list-style-type: none;
+        }
+
+        .player-card {
+            width: calc(80% / 5 - 20px); /* Lebar kartu pemain, dikurangi margin */
+            margin: 20px;
+            background-color: rgba(240, 240, 240, 0.445);
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: inline-block; /* Menampilkan dalam satu baris */
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .player-card:hover {
+            transform: scale(1.08); 
+            filter: brightness(90%); 
+        }
+
+        .player-card img {
+            width: 100%;
+            border-radius: 5px 5px 0 0; /* Memiliki radius sudut di bagian atas saja */
+        }
+
+        .player-details {
+            padding: 0px;
+            font-weight: bolder;
+            font-size: 18px;
+            padding-left: 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="background"></div>
+    <div id="overlay"></div>
+    <div id="content">
+        <div id="head-card">
+            <img id="logo" src="{{ team.team_badge }}" alt="{{ team.team_name }}" width="200">
+            <div id="team-info">
+                <h1>{{ team.team_name }}</h1>
+                <ul>
+                    <li>Country: {{ team.team_country }}</li>
+                    <li>Founded: {{ team.team_founded }}</li>
+                    <li>Venue: {{ team.venue.venue_name }}, {{ team.venue.venue_city }}</li>
+                    <li>Capacity: {{ team.venue.venue_capacity }}</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="player-cards">
+            {% for player in team.players %}
+            <div class="player-card">
+                <h2>{{ player.player_name }}</h2>
+                <img src="{{ player.player_image }}" alt="{{ player.player_name }}" width="50" onerror="replaceBrokenImage(this);">
+                <div class="player-details">
+                    <p>Age: {{ player.player_age }}</p>
+                    <p>Position: {{ player.player_type }}</p>
+                    <p>Rating: {{ player.player_rating }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <button onclick="goBack()">Back</button>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

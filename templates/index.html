@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Liga Clubs</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        #background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('/static/Background.jpeg');
+            background-size: cover;
+            filter: blur(10px);
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(33, 71, 241, 0.164);
+            z-index: -1;
+        }
+
+        #laliga-card {
+            margin: 20px auto 0px;
+            width: calc(90% - 70px); /* Lebar 80% dari lebar viewport */
+            max-width: 90%; /* Maksimum lebar 300px */
+            background-color: rgba(240, 240, 240, 0.445); /* Transparan abu-abu untuk latar belakang */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        #laliga-logo {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 170px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: left;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        li {
+            margin: 0 5px 10px;
+            width: calc(33.33% - 10px);
+            max-width: 300px;
+            background-color: rgba(240, 240, 240, 0.445); /* Transparan abu-abu untuk latar belakang */
+            padding: 15px;
+            border-radius: 10px;
+            transition: transform 0.3s, filter 0.3s; /* Efek transisi untuk perubahan ukuran dan filter */
+        }
+
+        li a {
+            display: block;
+            text-decoration: none;
+            color: #333;
+        }
+
+        li img {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 100px;
+        }
+
+        li span {
+            display: block;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        li:hover {
+            transform: scale(1.03); 
+            filter: brightness(90%); 
+        }
+    </style>
+</head>
+<body>
+    <div id="background"></div>
+    <div id="overlay"></div>
+    <div id="content">
+        <div id="laliga-card">
+            <img id="laliga-logo" src="/static/LaLiga_logo_2023.svg.webp" alt="La Liga Logo">
+        </div>
+        <ul>
+            {% for team in teams %}
+                <li>
+                    <a href="/team/{{ team.team_key }}">
+                        <img src="{{ team.team_badge }}" alt="{{ team.team_name }}">
+                        <span>{{ team.team_name }}</span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
