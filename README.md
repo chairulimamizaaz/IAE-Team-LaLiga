@@ -87,7 +87,11 @@ The screenshot above shows the interface displaying La Liga teams.
     </div>
 </body>
 </html>
+```
 
+### `team_detail.html`
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
